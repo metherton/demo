@@ -13,10 +13,15 @@
         vm.sendMessage = sendMessage;
 
         function sendMessage() {
-            smsFactory.send();
-            //smsFactory.send().then(function(data) {
-            //    console.log(data);
-            //});
+            smsFactory.send().then(success, error);
+        }
+
+        function success() {
+            vm.messageSuccessfullySent = true;
+        }
+
+        function error() {
+            vm.messageSendError = true;
         }
     }
 
