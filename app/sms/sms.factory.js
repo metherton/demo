@@ -15,7 +15,10 @@
         };
 
         function send() {
-            return smsApi.save({phone: '+31624543741', message: 'test message'});
+            //var response = smsApi.save({phone: '+31624543741', message: 'test message'});
+            //console.log(response);
+            //return response;
+            return smsApi.save({phone: '+31624543741', message: 'test message'}).$promise.then();
         }
 
 
