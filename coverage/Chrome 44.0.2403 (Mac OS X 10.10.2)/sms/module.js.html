@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for view2/view2.js</title>
+    <title>Code coverage report for sms/module.js</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../prettify.css">
     <link rel="stylesheet" href="../base.css">
@@ -12,16 +12,16 @@
     </style>
 </head>
 <body>
-<div class="header high">
-    <h1>Code coverage report for <span class="entity">view2/view2.js</span></h1>
+<div class="header medium">
+    <h1>Code coverage report for <span class="entity">sms/module.js</span></h1>
     <h2>
-        Statements: <span class="metric">100% <small>(2 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">66.67% <small>(2 / 3)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">100% <small>(2 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">100% <small>(2 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">50% <small>(1 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">66.67% <small>(2 / 3)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">view2/</a> &#187; view2.js</div>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">sms/</a> &#187; module.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
@@ -38,12 +38,17 @@
 11
 12
 13
-14</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+14
+15
+16
+17</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -51,20 +56,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function() {
 &nbsp;
-angular.module('myApp.view2', ['ngRoute'])
+    'use strict';
 &nbsp;
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view2', {
-    templateUrl: 'view2/view2.html',
-    controller: 'View2Ctrl'
-  });
-}])
+    angular.module('myApp.sms', ['ngRoute', 'ngResource'])
 &nbsp;
-.controller('View2Ctrl', [function() {
+        .config(['$routeProvider', <span class="fstat-no" title="function not covered" >function($routeProvider) {</span>
+<span class="cstat-no" title="statement not covered" >            $routeProvider.when('/sms', {</span>
+                templateUrl: 'sms/sms.html',
+                controller: 'SmsCtrl',
+                controllerAs: 'vm'
+            });
+        }]);
 &nbsp;
-}]);</pre></td></tr>
+&nbsp;
+})();
+&nbsp;</pre></td></tr>
 </table></pre>
 
 </div>
