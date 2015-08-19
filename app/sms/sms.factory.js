@@ -14,9 +14,9 @@
             send: send
         };
 
-        function send() {
+        function send(smsInfo) {
             var deferred = $q.defer();
-            smsApi.save({phone: '+31624543741', message: 'test message'}).$promise.then(function(response) {
+            smsApi.save({phone: smsInfo.phone, message: smsInfo.message}).$promise.then(function(response) {
                 deferred.resolve(response);
             }, function(error) {
                 deferred.reject(error);

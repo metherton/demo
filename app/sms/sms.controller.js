@@ -11,9 +11,10 @@
         var vm = this;
 
         vm.sendMessage = sendMessage;
+        vm.sms = {};
 
         function sendMessage() {
-            smsFactory.send().then(success, error);
+            smsFactory.send(vm.sms).then(success, error);
         }
 
         function success() {
