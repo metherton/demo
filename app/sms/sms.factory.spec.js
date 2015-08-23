@@ -23,7 +23,7 @@ describe('smsFactory', function() {
     });
 
     it('should do a POST request on the sms api', function() {
-        smsFactory.send().then(successHandler, errorHandler);
+        smsFactory.send({phone: '+31624543741', message: 'test message'}).then(successHandler, errorHandler);
 
         var expectedPostData = {phone: '+31624543741', message: 'test message'};
         $httpBackend.expectPOST('http://localhost:3000/sms', expectedPostData).respond({data: 'ok'});
