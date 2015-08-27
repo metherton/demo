@@ -26,6 +26,16 @@ describe('my app', function() {
             deferred.fulfill(hasClass);
           });
           return deferred.promise;
+        },
+        toBeGreaterThan: function (expected) {
+          var deferred = protractor.promise.defer();
+          this.actual.getText().then(function(actualValue) {
+            var strippedValue = actualValue.substr(-2);
+            var expectedValue = expected.substr(-2);
+            var isGreater = parseInt(strippedValue) > parseInt(expectedValue);
+            deferred.fulfill(isGreater);
+          });
+          return deferred.promise;
         }
       });
     });
@@ -34,7 +44,7 @@ describe('my app', function() {
     it('should render view1 when user navigates to /view1', function() {
       expect(element.all(by.css('[ng-view] p')).first().getText()).
         toMatch(/partial for view 1/);
-      expect(element.all(by.id('t')).first().getText()).toBe('10');
+      expect(element.all(by.id('t')).first()).toBeGreaterThan('0.09');
       expect(element.all(by.id('t')).first()).toHaveClass('red');
     });
 
