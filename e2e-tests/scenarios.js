@@ -17,10 +17,25 @@ describe('my app', function() {
       browser.get('index.html#/view1');
     });
 
+    beforeEach(function() {
+      this.addMatchers({
+        toHaveClass: function (expected) {
+          var deferred = protractor.promise.defer();
+          this.actual.getAttribute('class').then(function(classes) {
+            var hasClass = classes.split(' ').indexOf(expected) >= 0;
+            deferred.fulfill(hasClass);
+          });
+          return deferred.promise;
+        }
+      });
+    });
+
 
     it('should render view1 when user navigates to /view1', function() {
       expect(element.all(by.css('[ng-view] p')).first().getText()).
         toMatch(/partial for view 1/);
+      expect(element.all(by.id('t')).first().getText()).toBe('10');
+      expect(element.all(by.id('t')).first()).toHaveClass('red');
     });
 
   });
