@@ -27,7 +27,26 @@ describe('my app', function() {
           });
           return deferred.promise;
         },
-        toBeGreaterThan: function (expected) {
+        toBeGreaterThan: function (util, customEqualityTesters) {
+          return {
+            compare: function(actual, expected) {
+              if (expected === undefined) {
+                expected = '';
+              }
+              var result = {};
+              var strippedValue = actual.substr(-2);
+              var expectedValue = expected.substr(-2);
+              result.pass = parseInt(strippedValue) > parseInt(expectedValue);
+              if (result.pass) {
+                result.message = "Expected " + actual + " not to be quite so goofy";
+              } else {
+                result.message = "Expected " + actual + " to be goofy, but it was not very goofy";
+              }
+              return result;
+            }
+          };
+        },
+        toBeGreaterThan1: function (expected) {
           var deferred = protractor.promise.defer();
           this.actual.getText().then(function(actualValue) {
             var strippedValue = actualValue.substr(-2);
@@ -70,7 +89,7 @@ describe('my app', function() {
       }).toBeGoofy(' is fun');
       var el = element.all(by.id('t')).first();
       console.log('el', el);
-      expect(el).toBeGreaterThan('0.09');
+      expect(el.getText()).toBeGreaterThan('0.09');
       expect(el).toHaveClass('red');
     });
 
