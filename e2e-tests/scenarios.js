@@ -36,6 +36,23 @@ describe('my app', function() {
             deferred.fulfill(isGreater);
           });
           return deferred.promise;
+        },
+        toBeGoofy: function(util, customEqualityTesters) {
+            return {
+               compare: function(actual, expected) {
+                 if (expected === undefined) {
+                   expected = '';
+                 }
+                 var result = {};
+                 result.pass = util.equals(actual.hyuk, "gawrsh" + expected, customEqualityTesters);
+                 if (result.pass) {
+                   result.message = "Expected " + actual + " not to be quite so goofy";
+                 } else {
+                   result.message = "Expected " + actual + " to be goofy, but it was not very goofy";
+                 }
+                 return result;
+               }
+            };
         }
       });
     });
@@ -44,8 +61,17 @@ describe('my app', function() {
     it('should render view1 when user navigates to /view1', function() {
       expect(element.all(by.css('[ng-view] p')).first().getText()).
         toMatch(/partial for view 1/);
-      expect(element.all(by.id('t')).first()).toBeGreaterThan('0.09');
-      expect(element.all(by.id('t')).first()).toHaveClass('red');
+
+      expect({
+        hyuk: 'gawrsh'
+      }).toBeGoofy();
+      expect({
+        hyuk: 'gawrsh is fun'
+      }).toBeGoofy(' is fun');
+      var el = element.all(by.id('t')).first();
+      console.log('el', el);
+      expect(el).toBeGreaterThan('0.09');
+      expect(el).toHaveClass('red');
     });
 
   });
