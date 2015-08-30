@@ -46,16 +46,7 @@ describe('my app', function() {
             }
           };
         },
-        toBeGreaterThan1: function (expected) {
-          var deferred = protractor.promise.defer();
-          this.actual.getText().then(function(actualValue) {
-            var strippedValue = actualValue.substr(-2);
-            var expectedValue = expected.substr(-2);
-            var isGreater = parseInt(strippedValue) > parseInt(expectedValue);
-            deferred.fulfill(isGreater);
-          });
-          return deferred.promise;
-        },
+
         toBeGoofy: function(util, customEqualityTesters) {
             return {
                compare: function(actual, expected) {
