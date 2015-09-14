@@ -2,6 +2,9 @@
 
 /* https://github.com/angular/protractor/blob/master/docs/toc.md */
 
+//var View1Page = require('./pages/view1.page.js');
+var View1Page = require('view1-page');
+
 describe('my app', function() {
 
 
@@ -13,8 +16,10 @@ describe('my app', function() {
 
   describe('view1', function() {
 
+    var page;
+
     beforeEach(function() {
-      browser.get('index.html#/view1');
+      page = new View1Page();
     });
 
     beforeEach(function() {
@@ -69,7 +74,7 @@ describe('my app', function() {
 
 
     it('should render view1 when user navigates to /view1', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
+      expect(page.descriptionText.getText()).
         toMatch(/partial for view 1/);
 
       expect({
