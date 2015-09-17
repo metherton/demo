@@ -2,8 +2,8 @@
 
 /* https://github.com/angular/protractor/blob/master/docs/toc.md */
 
-//var View1Page = require('./pages/view1.page.js');
-var View1Page = require('view1-page');
+var View1Page = require('./pages/view1.page.js');
+//var View1Page = require('view1-page');
 
 describe('my app', function() {
 
@@ -84,9 +84,14 @@ describe('my app', function() {
         hyuk: 'gawrsh is fun'
       }).toBeGoofy(' is fun');
       var el = element.all(by.id('t')).first();
-      console.log('el', el);
+  //    console.log('el', el);
       expect(el.getText()).toBeGreaterThan('0.09');
       expect(el).toHaveClass('red');
+    });
+
+    it('should be possible to switch tabs', function() {
+      page.nuLink.click();
+      browser.sleep(3000);
     });
 
   });
