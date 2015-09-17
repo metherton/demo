@@ -101,29 +101,49 @@ describe('my app', function() {
         console.log('handle1', handle1);
       });
 
-      page.nuLink.click().then(function() {
+      //page.nuLink.click().then(function() {
+      //
+      //  browser.ignoreSynchronization = true;
+      //
+      //  browser.sleep(10000);
+      //
+      //  //browser.getAllWindowHandles().then(function(handles) {
+      //  //  browser.ignoreSynchronization = true;
+      //  //  browser.switchTo().window(handles[1]).then(function() {
+      //  //    browser.sleep(1000);
+      //  //  });
+      //  //  browser.getCurrentUrl().then(function(url) {
+      //  //    console.log('url is ', url);
+      //  //  });
+      //  //  browser.switchTo().window(handle1).then(function() {
+      //  //    browser.sleep(1000);
+      //  //  });
+      //  //  browser.ignoreSynchronization = false;
+      //  //  browser.getCurrentUrl().then(function(url) {
+      //  //    console.log('original url is ', url);
+      //  //  });
+      //  //  browser.sleep(1000);
+      //  //})
+      //});
 
+      page.nuLink.click()
+
+      browser.getAllWindowHandles().then(function(handles) {
         browser.ignoreSynchronization = true;
-
-        browser.sleep(10000);
-
-        browser.getAllWindowHandles().then(function(handles) {
-          browser.ignoreSynchronization = true;
-          browser.switchTo().window(handles[1]).then(function() {
-            browser.sleep(1000);
-          });
-          browser.getCurrentUrl().then(function(url) {
-            console.log('url is ', url);
-          });
-          browser.switchTo().window(handle1).then(function() {
-            browser.sleep(1000);
-          });
-          browser.ignoreSynchronization = false;
-          browser.getCurrentUrl().then(function(url) {
-            console.log('original url is ', url);
-          });
+        browser.switchTo().window(handles[1]).then(function() {
           browser.sleep(1000);
-        })
+        });
+        browser.getCurrentUrl().then(function(url) {
+          console.log('url is ', url);
+        });
+        browser.switchTo().window(handle1).then(function() {
+          browser.sleep(1000);
+        });
+        browser.ignoreSynchronization = false;
+        browser.getCurrentUrl().then(function(url) {
+          console.log('original url is ', url);
+        });
+        browser.sleep(1000);
       });
 
       page.nuLink.click().then(function() {
