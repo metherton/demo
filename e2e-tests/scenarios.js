@@ -105,53 +105,78 @@ describe('my app', function() {
 
         browser.ignoreSynchronization = true;
 
-//        browser.driver.wait(titlePresent, 20000);
-
-        //browser.driver.wait(function() {
-        //  return browser.driver.getCurrentUrl().then(function(url) {
-        //    console.log('url', url);
-        //    return /nu/.test(url);
-        //  });
-        //}, 20000);
-
-        browser.sleep(15000);
+        browser.sleep(10000);
 
         browser.getAllWindowHandles().then(function(handles) {
-          console.log('handles', handles);
-          //handle1 = handles[0];
-          //handle2 = handles[1];
-          console.log('handle1', handles[0]);
-          console.log('handle2', handles[1]);
-
-          //browser.switchTo().window(handle2);
-          //browser.sleep(5000);
           browser.ignoreSynchronization = true;
           browser.switchTo().window(handles[1]).then(function() {
             browser.sleep(1000);
           });
-
           browser.getCurrentUrl().then(function(url) {
             console.log('url is ', url);
           });
-
-//          browser.ignoreSynchronization = false;
-         // browser.driver.close();
           browser.switchTo().window(handle1).then(function() {
             browser.sleep(1000);
           });
-
-
-
           browser.ignoreSynchronization = false;
-
           browser.getCurrentUrl().then(function(url) {
             console.log('original url is ', url);
           });
-
           browser.sleep(1000);
-
         })
       });
+
+      page.nuLink.click().then(function() {
+
+        browser.ignoreSynchronization = true;
+
+        browser.sleep(10000);
+
+        browser.getAllWindowHandles().then(function(handles) {
+          browser.ignoreSynchronization = true;
+          browser.switchTo().window(handles[1]).then(function() {
+            browser.sleep(1000);
+          });
+          browser.getCurrentUrl().then(function(url) {
+            console.log('url is ', url);
+          });
+          console.log('handles', handles);
+          browser.switchTo().window(handle1).then(function() {
+            browser.sleep(1000);
+          });
+          browser.ignoreSynchronization = false;
+          browser.getCurrentUrl().then(function(url) {
+            console.log('original url is ', url);
+          });
+          browser.sleep(1000);
+        })
+      });
+
+      //page.googleLink.click().then(function() {
+      //
+      //  browser.ignoreSynchronization = true;
+      //
+      //  browser.sleep(15000);
+      //
+      //  browser.getAllWindowHandles().then(function(handles) {
+      //    browser.ignoreSynchronization = true;
+      //    browser.switchTo().window(handles[1]).then(function() {
+      //      browser.sleep(1000);
+      //    });
+      //    browser.getCurrentUrl().then(function(url) {
+      //      console.log('url is ', url);
+      //    });
+      //    browser.switchTo().window(handle1).then(function() {
+      //      browser.sleep(1000);
+      //    });
+      //    browser.ignoreSynchronization = false;
+      //    browser.getCurrentUrl().then(function(url) {
+      //      console.log('original url is ', url);
+      //    });
+      //    browser.sleep(1000);
+      //  })
+      //});
+
 
       browser.sleep(1000);
 

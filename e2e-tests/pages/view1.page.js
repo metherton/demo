@@ -7,7 +7,8 @@ var View1Page = function () {
 
 View1Page.prototype = Object.create({}, {
     descriptionText: { get: function () { return element.all(by.css('[ng-view] p')).first(); }},
-    nuLink: { get: function() {return element(by.id('nu'))}}
+    nuLink: { get: function() {return element(by.id('nu'))}},
+    googleLink: { get: function() {return element(by.id('google'))}}
 });
 
 module.exports = View1Page;
