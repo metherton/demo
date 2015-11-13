@@ -7,214 +7,29 @@ var View1Page = require('./pages/view1.page.js');
 
 describe('my app', function() {
 
-  var handlesLoaded = false;
-
-  xit('should automatically redirect to /view1 when location hash/fragment is empty', function() {
-    browser.get('index.html');
-    expect(browser.getLocationAbsUrl()).toMatch("/view1");
-  });
-
-
   describe('view1', function() {
 
-    var page;
-    var handle1, handle2;
-
     beforeEach(function() {
-      page = new View1Page();
+      browser.get('index.html#/view1');
     });
 
-    beforeEach(function() {
-      this.addMatchers({
-        toHaveClass: function (expected) {
-          var deferred = protractor.promise.defer();
-          this.actual.getAttribute('class').then(function(classes) {
-            var hasClass = classes.split(' ').indexOf(expected) >= 0;
-            deferred.fulfill(hasClass);
-          });
-          return deferred.promise;
-        },
-        toBeGreaterThan: function (util, customEqualityTesters) {
-          return {
-            compare: function(actual, expected) {
-              if (expected === undefined) {
-                expected = '';
-              }
-              var result = {};
-              var strippedValue = actual.substr(-2);
-              var expectedValue = expected.substr(-2);
-              result.pass = parseInt(strippedValue) > parseInt(expectedValue);
-              if (result.pass) {
-                result.message = "Expected " + actual + " not to be quite so goofy";
-              } else {
-                result.message = "Expected " + actual + " to be goofy, but it was not very goofy";
-              }
-              return result;
-            }
-          };
-        },
-
-        toBeGoofy: function(util, customEqualityTesters) {
-            return {
-               compare: function(actual, expected) {
-                 if (expected === undefined) {
-                   expected = '';
-                 }
-                 var result = {};
-                 result.pass = util.equals(actual.hyuk, "gawrsh" + expected, customEqualityTesters);
-                 if (result.pass) {
-                   result.message = "Expected " + actual + " not to be quite so goofy";
-                 } else {
-                   result.message = "Expected " + actual + " to be goofy, but it was not very goofy";
-                 }
-                 return result;
-               }
-            };
-        }
-      });
-    });
-
-
-    xit('should render view1 when user navigates to /view1', function() {
-      expect(page.descriptionText.getText()).
-        toMatch(/partial for view 1/);
-
-      expect({
-        hyuk: 'gawrsh'
-      }).toBeGoofy();
-      expect({
-        hyuk: 'gawrsh is fun'
-      }).toBeGoofy(' is fun');
-      var el = element.all(by.id('t')).first();
-  //    console.log('el', el);
-      expect(el.getText()).toBeGreaterThan('0.09');
-      expect(el).toHaveClass('red');
-    });
-
-    it('should be possible to switch tabs', function() {
-
-      var EC = protractor.ExpectedConditions;
-      var titlePresent = EC.titleContains('NU');
-
-      browser.getWindowHandle().then(function(handle) {
-        handle1 = handle;
-        console.log('handle1', handle1);
-      });
-
-      //page.nuLink.click().then(function() {
-      //
-      //  browser.ignoreSynchronization = true;
-      //
-      //  browser.sleep(10000);
-      //
-      //  //browser.getAllWindowHandles().then(function(handles) {
-      //  //  browser.ignoreSynchronization = true;
-      //  //  browser.switchTo().window(handles[1]).then(function() {
-      //  //    browser.sleep(1000);
-      //  //  });
-      //  //  browser.getCurrentUrl().then(function(url) {
-      //  //    console.log('url is ', url);
-      //  //  });
-      //  //  browser.switchTo().window(handle1).then(function() {
-      //  //    browser.sleep(1000);
-      //  //  });
-      //  //  browser.ignoreSynchronization = false;
-      //  //  browser.getCurrentUrl().then(function(url) {
-      //  //    console.log('original url is ', url);
-      //  //  });
-      //  //  browser.sleep(1000);
-      //  //})
-      //});
-
-      page.nuLink.click()
-
-      browser.getAllWindowHandles().then(function(handles) {
-        browser.ignoreSynchronization = true;
-        browser.switchTo().window(handles[1]).then(function() {
-          browser.sleep(1000);
-        });
-        browser.getCurrentUrl().then(function(url) {
-          console.log('url is ', url);
-        });
-        browser.switchTo().window(handle1).then(function() {
-          browser.sleep(1000);
-        });
-        browser.ignoreSynchronization = false;
-        browser.getCurrentUrl().then(function(url) {
-          console.log('original url is ', url);
-        });
-        browser.sleep(1000);
-      });
-
-      page.nuLink.click().then(function() {
-
-        browser.ignoreSynchronization = true;
-
-        browser.sleep(10000);
-
-        browser.getAllWindowHandles().then(function(handles) {
-          browser.ignoreSynchronization = true;
-          browser.switchTo().window(handles[1]).then(function() {
-            browser.sleep(1000);
-          });
-          browser.getCurrentUrl().then(function(url) {
-            console.log('url is ', url);
-          });
-          console.log('handles', handles);
-          browser.switchTo().window(handle1).then(function() {
-            browser.sleep(1000);
-          });
-          browser.ignoreSynchronization = false;
-          browser.getCurrentUrl().then(function(url) {
-            console.log('original url is ', url);
-          });
-          browser.sleep(1000);
-        })
-      });
-
-      //page.googleLink.click().then(function() {
-      //
-      //  browser.ignoreSynchronization = true;
-      //
-      //  browser.sleep(15000);
-      //
-      //  browser.getAllWindowHandles().then(function(handles) {
-      //    browser.ignoreSynchronization = true;
-      //    browser.switchTo().window(handles[1]).then(function() {
-      //      browser.sleep(1000);
-      //    });
-      //    browser.getCurrentUrl().then(function(url) {
-      //      console.log('url is ', url);
-      //    });
-      //    browser.switchTo().window(handle1).then(function() {
-      //      browser.sleep(1000);
-      //    });
-      //    browser.ignoreSynchronization = false;
-      //    browser.getCurrentUrl().then(function(url) {
-      //      console.log('original url is ', url);
-      //    });
-      //    browser.sleep(1000);
-      //  })
-      //});
-
-
-      browser.sleep(1000);
-
-    });
-
-  });
-
-
-  xdescribe('view2', function() {
-
-    beforeEach(function() {
-      browser.get('index.html#/view2');
-    });
-
-
-    it('should render view2 when user navigates to /view2', function() {
+    it('should render view1 when user navigates to /view1', function() {
       expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 2/);
+        toMatch(/This is the partial for view 1/);
+
+      var openBtn = element(by.id('btnOpen'));
+      openBtn.click();
+
+      browser.ignoreSynchronization = true;
+      browser.getAllWindowHandles().then(function(handles) {
+        browser.switchTo().window(handles[1]);
+        browser.sleep(1000);
+        var closeBtn = element(by.id('btnClose'));
+        closeBtn.click();
+        browser.ignoreSynchronization = false;
+      });
+
+      browser.sleep(3000);
     });
 
   });
