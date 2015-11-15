@@ -23,14 +23,22 @@ describe('my app', function() {
       browser.ignoreSynchronization = true;
       browser.getAllWindowHandles().then(function(handles) {
         browser.switchTo().window(handles[1]);
-        browser.sleep(1000);
         var closeBtn = element(by.id('btnClose'));
         closeBtn.click();
         browser.ignoreSynchronization = false;
+        browser.switchTo().window(handles[0]);
+
       });
 
-      browser.sleep(3000);
+      //browser.sleep(6000);
+
+      expect(element.all(by.css('[ng-view] p')).first().getText()).
+          toMatch(/This is the partial for view 1/);
+
+
     });
+
+
 
   });
 });
