@@ -30,8 +30,6 @@ describe('my app', function() {
 
       });
 
-      //browser.sleep(6000);
-
       expect(element.all(by.css('[ng-view] p')).first().getText()).
           toMatch(/This is the partial for view 1/);
 

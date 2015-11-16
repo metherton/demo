@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for sms/sms.controller.spec.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../prettify.css">
+    <link rel="stylesheet" href="../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">sms/sms.controller.spec.js</span></h1>
+    <h2>
+        Statements: <span class="metric">45.45% <small>(10 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">20% <small>(1 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">45.45% <small>(10 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">sms/</a> &#187; sms.controller.spec.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+xdescribe('sms controller', function() {
+&nbsp;
+    var smsCtrl;
+    var mockSmsFactory;
+    var $q, deferredResponse;
+    var $rootScope;
+&nbsp;
+    beforeEach(module('myApp.sms'));
+&nbsp;
+    beforeEach(module(<span class="fstat-no" title="function not covered" >function($provide) {</span>
+<span class="cstat-no" title="statement not covered" >        mockSmsFactory = {};</span>
+<span class="cstat-no" title="statement not covered" >        $provide.value('smsFactory', mockSmsFactory);</span>
+    }));
+&nbsp;
+    beforeEach(inject(<span class="fstat-no" title="function not covered" >function($controller, _$q_, _$rootScope_) {</span>
+<span class="cstat-no" title="statement not covered" >        $q = _$q_;</span>
+<span class="cstat-no" title="statement not covered" >        $rootScope = _$rootScope_;</span>
+<span class="cstat-no" title="statement not covered" >        deferredResponse = $q.defer();</span>
+<span class="cstat-no" title="statement not covered" >        mockSmsFactory.send = jasmine.createSpy('smsFactory.send').and.returnValue(deferredResponse.promise);</span>
+<span class="cstat-no" title="statement not covered" >        mockSmsFactory.get = jasmine.createSpy('smsFactory.get').and.returnValue(deferredResponse.promise);</span>
+<span class="cstat-no" title="statement not covered" >        smsCtrl = $controller('SmsCtrl');</span>
+    }));
+&nbsp;
+&nbsp;
+    it('should invoke smsFactory send method', <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >        smsCtrl.sendMessage();</span>
+<span class="cstat-no" title="statement not covered" >        expect(mockSmsFactory.send).toHaveBeenCalled();</span>
+    });
+&nbsp;
+    it('should invoke smsFactory get method', <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >        smsCtrl.getMessage();</span>
+<span class="cstat-no" title="statement not covered" >        expect(mockSmsFactory.get).toHaveBeenCalled();</span>
+    });
+&nbsp;
+});</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Nov 16 2015 21:39:58 GMT+0100 (CET)</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
