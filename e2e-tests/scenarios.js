@@ -20,13 +20,14 @@ describe('my app', function() {
       var openBtn = element(by.id('btnOpen'));
       openBtn.click();
 
-      browser.ignoreSynchronization = true;
-      browser.getAllWindowHandles().then(function(handles) {
-        browser.switchTo().window(handles[1]);
-        var closeBtn = element(by.id('btnClose'));
+   //   browser.ignoreSynchronization = true;
+      browser.driver.getAllWindowHandles().then(function(handles) {
+        browser.driver.switchTo().window(handles[1]);
+        var closeBtn =  browser.driver.findElement(by.id('btnClose'))
+        //var closeBtn = element(by.id('btnClose'));
         closeBtn.click();
-        browser.ignoreSynchronization = false;
-        browser.switchTo().window(handles[0]);
+   //     browser.ignoreSynchronization = false;
+        browser.driver.switchTo().window(handles[0]);
 
       });
 

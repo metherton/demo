@@ -10,7 +10,7 @@ describe('myApp.view1 module', function() {
 
       mockWindow = {};
       mockScope = {};
-    
+
       $provide.value('$window', mockWindow);
       $provide.value('$scope', mockScope);
 
